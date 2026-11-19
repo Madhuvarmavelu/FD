@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#101510" />
+  <title>Football Director — Club Ownership Simulator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#" aria-label="Football Director home">
+        <span class="brand-mark">FD</span>
+        <span><b>FOOTBALL</b><small>DIRECTOR</small></span>
+      </a>
+      <div class="club-mini">
+        <div class="crest">NU</div>
+        <div><b id="sideClub">Northcastle United</b><small id="sideLeague">League Two · England</small></div>
+      </div>
+      <div class="nav-label">CLUB OFFICE</div>
+      <nav>
+        <button class="nav-item active" data-page="overview"><span>◫</span> Overview</button>
+        <button class="nav-item" data-page="squad"><span>♙</span> Squad</button>
+        <button class="nav-item" data-page="transfers"><span>⇄</span> Transfers</button>
+        <button class="nav-item" data-page="finances"><span>▤</span> Finances</button>
+        <button class="nav-item" data-page="facilities"><span>⌂</span> Facilities</button>
+        <button class="nav-item" data-page="competition"><span>♜</span> Competition</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="season-mini"><small>SEASON</small><b id="sideSeason">2026 / 27</b><span class="season-dot"></span></div>
+        <button class="nav-item" id="saveBtn"><span>⬇</span> Save career</button>
+        <button class="nav-item" id="resetBtn"><span>↺</span> New career</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div><div class="eyebrow" id="pageEyebrow">CLUB OFFICE / OVERVIEW</div><h1 id="pageTitle">The Boardroom</h1></div>
+        <div class="top-actions">
+          <div class="date-pill"><span class="live-dot"></span><span id="dateText">1 July 2026</span></div>
+          <button class="advance-btn" id="advanceBtn">Advance week <b>→</b></button>
+          <div class="avatar">OW</div>
+        </div>
+      </header>
+
+      <section id="page-overview" class="page active">
+        <div class="welcome-row">
+          <div><p class="muted">YOUR CLUB. YOUR LEGACY.</p><h2 id="welcomeTitle">Build something<br><em>worth remembering.</em></h2><p class="welcome-copy">Every decision shapes the future of Northcastle United.</p></div>
+          <div class="stadium-card"><div class="stadium-overlay"></div><div class="stadium-caption"><span>HOME GROUND</span><b>Northcastle Arena</b><small>Capacity · 18,500</small></div><div class="stadium-tag">EST. 2026</div></div>
+        </div>
+        <div class="stat-grid">
+          <article class="stat-card"><span>CLUB BALANCE</span><strong id="balanceStat">€10.00M</strong><small class="positive">Healthy finances</small><i>€</i></article>
+          <article class="stat-card"><span>LEAGUE POSITION</span><strong id="positionStat">—</strong><small>League Two</small><i>↗</i></article>
+          <article class="stat-card"><span>CLUB REPUTATION</span><strong id="repStat">18<span>/100</span></strong><small>Local following</small><i>✦</i></article>
+          <article class="stat-card"><span>SQUAD VALUE</span><strong id="valueStat">€4.25M</strong><small>First team</small><i>◆</i></article>
+        </div>
+        <div class="content-grid">
+          <section class="panel next-match">
+            <div class="panel-head"><div><span class="eyebrow">UP NEXT</span><h3>Matchday preview</h3></div><span class="tag">LEAGUE TWO</span></div>
+            <div class="match-body"><div class="team"><div class="team-crest">NU</div><b id="matchHome">Northcastle</b><small>HOME</small></div><div class="versus"><strong>VS</strong><small id="matchDate">13 JUL</small></div><div class="team"><div class="team-crest opponent">BC</div><b id="matchAway">Bristol City</b><small>AWAY</small></div></div>
+            <div class="match-footer"><span>Northcastle Arena</span><span>Friendly fixture</span></div>
+          </section>
+          <section class="panel objectives">
+            <div class="panel-head"><div><span class="eyebrow">BOARD EXPECTATIONS</span><h3>Season objectives</h3></div><span class="tag green">ON TRACK</span></div>
+            <div class="objective"><div><span>Finish in the top half</span><b>0 / 1</b></div><div class="progress"><i style="width:8%"></i></div></div>
+            <div class="objective"><div><span>Maintain positive finances</span><b id="financeObjective">100%</b></div><div class="progress"><i id="financeProgress" style="width:100%"></i></div></div>
+            <div class="objective"><div><span>Develop young talent</span><b>0 / 2</b></div><div class="progress"><i style="width:15%"></i></div></div>
+          </section>
+        </div>
+        <section class="panel activity-panel"><div class="panel-head"><div><span class="eyebrow">THE LATEST</span><h3>Club news</h3></div><span class="muted">LIVE FEED</span></div><div id="newsFeed" class="news-feed"></div></section>
+      </section>
+
+      <section id="page-squad" class="page">
+        <div class="section-intro"><div><p class="muted">THE PEOPLE WHO MAKE IT HAPPEN</p><h2>First-team squad</h2><p>Review contracts, player value and the strength of your team.</p></div><div class="big-number" id="squadCount">18 <small>PLAYERS</small></div></div>
+        <div class="panel table-panel"><div class="panel-head"><h3>Player roster</h3><span class="tag">SENIOR TEAM</span></div><div class="table-wrap"><table><thead><tr><th>PLAYER</th><th>POSITION</th><th>AGE</th><th>OVR</th><th>VALUE</th><th>WAGE / WK</th></tr></thead><tbody id="squadTable"></tbody></table></div></div>
+      </section>
+
+      <section id="page-transfers" class="page">
+        <div class="section-intro"><div><p class="muted">BUILD YOUR NEXT GREAT TEAM</p><h2>Transfer market</h2><p>Make offers for available players. A deal is only complete when you can afford it.</p></div><div class="big-number" id="transferBudget">€3.00M <small>TRANSFER BUDGET</small></div></div>
+        <div class="panel table-panel"><div class="panel-head"><h3>Available players</h3><span class="tag green">SCOUTING NETWORK</span></div><div class="table-wrap"><table><thead><tr><th>PLAYER</th><th>POSITION</th><th>AGE</th><th>OVR</th><th>ASKING PRICE</th><th></th></tr></thead><tbody id="transferTable"></tbody></table></div></div>
+      </section>
+
+      <section id="page-finances" class="page">
+        <div class="section-intro"><div><p class="muted">EVERY POUND HAS A PURPOSE</p><h2>Club finances</h2><p>Keep the books healthy while investing in long-term success.</p></div></div>
+        <div class="stat-grid two"><article class="stat-card"><span>AVAILABLE BALANCE</span><strong id="financeBalance">€10.00M</strong><small>Current cash</small></article><article class="stat-card"><span>WEEKLY WAGE BILL</span><strong id="wageBill">€86K</strong><small>First-team payroll</small></article></div>
+        <div class="content-grid"><section class="panel"><div class="panel-head"><h3>Season projection</h3></div><div class="finance-line"><span>Starting investment</span><b>€10.00M</b></div><div class="finance-line"><span>Transfer budget</span><b id="finTransfer">€3.00M</b></div><div class="finance-line"><span>Weekly operating cost</span><b id="finWages">€86K</b></div><div class="finance-line"><span>Stadium revenue / match</span><b>€145K</b></div><div class="finance-line total"><span>Current club balance</span><b id="finTotal">€10.00M</b></div></section><section class="panel"><div class="panel-head"><h3>Commercial opportunities</h3><span class="tag">AVAILABLE</span></div><p class="muted">Choose a sponsor package to strengthen the club's income.</p><div class="sponsor-card"><div><b>Regional partner</b><small>One-time signing bonus · €350K</small></div><button class="small-btn" id="sponsorBtn">Sign deal</button></div><div class="sponsor-card"><div><b>National brand</b><small>One-time signing bonus · €750K</small></div><button class="small-btn" id="nationalBtn">Sign deal</button></div></section></div>
+      </section>
+
+      <section id="page-facilities" class="page">
+        <div class="section-intro"><div><p class="muted">INVEST IN THE FUTURE</p><h2>Club facilities</h2><p>Upgrades improve the club's long-term development and commercial potential.</p></div></div>
+        <div class="facility-grid" id="facilityGrid"></div>
+      </section>
+
+      <section id="page-competition" class="page">
+        <div class="section-intro"><div><p class="muted">THE ROAD TO THE TOP</p><h2>League centre</h2><p>Follow your campaign and see how the table evolves each week.</p></div><div class="big-number">2026/27 <small>SEASON</small></div></div>
+        <div class="content-grid"><section class="panel"><div class="panel-head"><h3>League table</h3><span class="tag">LEAGUE TWO</span></div><div class="table-wrap"><table><thead><tr><th>#</th><th>CLUB</th><th>PL</th><th>W</th><th>D</th><th>L</th><th>PTS</th></tr></thead><tbody id="leagueTable"></tbody></table></div></section><section class="panel"><div class="panel-head"><h3>Season calendar</h3></div><div id="fixturesList"></div></section></div>
+      </section>
+      <footer>FOOTBALL DIRECTOR <span>·</span> SINGLE-PLAYER CLUB OWNERSHIP SIMULATOR <span class="footer-right">A GAME ABOUT BUILDING A LEGACY.</span></footer>
+    </main>
+  </div>
+  <div class="toast" id="toast"></div>
+  <script src="game.js"></script>
+</body>
+</html>
